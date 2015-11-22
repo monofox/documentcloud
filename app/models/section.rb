@@ -2,7 +2,7 @@ class Section < ActiveRecord::Base
 
   include DC::Store::DocumentResource
 
-  belongs_to :document
+  belongs_to :document, :touch => true
   belongs_to :organization
   belongs_to :account
 
