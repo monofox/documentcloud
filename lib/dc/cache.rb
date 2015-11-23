@@ -1,5 +1,11 @@
 module DC
   module Cache
+    def self.strategy
+      {
+        :controller => PageCache::Controller, #HTTPCache::Controller,
+        :model      => PageCache::Model       #HTTPCache::Model
+      }
+    end
   end
 end
 
