@@ -1,6 +1,6 @@
 class Docdata < ActiveRecord::Base
 
-  belongs_to :document
+  belongs_to :document, :touch => true
 
   before_validation :convert_data_to_hash
   validates :document_id, :uniqueness=>{ :allow_nil => true }

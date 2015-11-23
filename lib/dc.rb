@@ -12,6 +12,7 @@ require 'dc/import'
 require 'dc/i18n'
 require 'dc/urls'
 require 'dc/embed'
+require 'dc/cache'
 
 module DC
 end

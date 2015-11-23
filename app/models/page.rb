@@ -15,7 +15,7 @@ class Page < ActiveRecord::Base
   include ActionView::Helpers::SanitizeHelper
   extend ActionView::Helpers::SanitizeHelper::ClassMethods
 
-  belongs_to :document
+  belongs_to :document, :touch => true
   belongs_to :account
   belongs_to :organization
 
