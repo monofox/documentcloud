@@ -2,9 +2,9 @@ module DC
   module Cache
     module HTTPCache
       module Controller
-        CACHE_DURATION
+        CACHE_DURATION = 5
         
-        def cache(thing)
+        def cache(resource)
           # cache is sort of a misnomer in this sense
           # since caching will be dictated by behavior of the
           # downstream proxy.
@@ -15,7 +15,7 @@ module DC
           set_cache_headers
         end
         
-        def expire(thing)
+        def expire(model)
           # expire should be called almost exclusively in contexts where
           # a user is logged in (and thus not subject to the public cache)
           # so `expire` is used to clear the PUBLIC cache of a resource
