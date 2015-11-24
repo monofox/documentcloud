@@ -4,7 +4,7 @@ module DC
       module Controller
         CACHE_DURATION = 5
         
-        def cache(resource)
+        def cache(resource, options={})
           # cache is sort of a misnomer in this sense
           # since caching will be dictated by behavior of the
           # downstream proxy.
@@ -12,7 +12,7 @@ module DC
           # As such this is less an imperative command
           # and more the expression of a directive for how this
           # request should be treated by other parties.
-          set_cache_headers
+          set_public_cache_headers(options.fetch(:duration, CACHE_DURATION))
         end
         
         def expire(model)
@@ -22,8 +22,8 @@ module DC
           # or set of resources.
         end
         
-        def set_cache_headers
-          response.headers['cache-control'] = ""
+        def set_public_cache_headers(cache_duration=CACHE_DURATION)
+          response.headers['cache-control'] = "public, max-age=#{cache_duration}"
         end
         
       end
