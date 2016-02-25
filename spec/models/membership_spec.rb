@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Membership, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  context "when inactive" do
+    it "should have a deactivated date"
+  end
+
 end
