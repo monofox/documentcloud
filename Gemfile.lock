@@ -211,6 +211,7 @@ GEM
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    mysql (2.9.1)
     nenv (0.3.0)
     net-ssh (2.1.4)
     net-ssh-shell (0.2.0)
@@ -384,6 +385,7 @@ DEPENDENCIES
   jammit!
   minitest
   minitest-spec-rails
+  mysql
   net-ssh-shell
   nokogiri (~> 1.6.0)
   omniauth (~> 1.2.1)

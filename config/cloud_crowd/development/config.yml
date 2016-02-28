@@ -1,5 +1,10 @@
+<% secrets = YAML.load_file('secrets/secrets.yml')[ENV['RAILS_ENV']] %>
 :central_server:      http://dev.dcloud.org:8080
 :max_workers:         2
 :storage:             filesystem
 :actions_path:        ./app/actions
 :work_unit_retries:   1
+:rails_env:           development
+:http_authentication: no
+:login:               <%= secrets['username'] %>
+:password:            <%= secrets['db_password'] %>

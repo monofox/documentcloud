@@ -87,7 +87,12 @@ class DocumentImport < DocumentAction
       @page_aspect_ratios = duplicate.pages.order(:page_number).pluck(:aspect_ratio).map{ |n| n.nil? ? 0 : n }
       asset_store.copy_images( duplicate, document, access )
     else
-      Docsplit.extract_images(@pdf, :format => :gif, :size => Page::IMAGE_SIZES.values, :rolling => true, :output => 'images')
+      begin
+        Docsplit.extract_images(@pdf, :format => :gif, :size => Page::IMAGE_SIZES.values, :rolling => true, :output => 'images')
+      rescue Docsplit::ExtractionFailed => e
+        # LifecycleMailer.exception_notification(e,options).deliver
+        # ignore it...
+      end
       
       page_image_paths = Dir['images/700x/*.gif']
       @page_aspect_ratios = page_image_paths.map do |image_path|

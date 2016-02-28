@@ -14,7 +14,7 @@
     <link href="<%= DC.cdn_root(:agnostic => true) %>/viewer/viewer.css" media="screen" rel="stylesheet" type="text/css" />
   <![endif]-->
   <link href="<%= DC.cdn_root(:agnostic => true) %>/viewer/printviewer.css" media="print" rel="stylesheet" type="text/css" />
-  <script src="<%= DC.cdn_root(:agnostic => true) %>/viewer/viewer.js"></script>
+  <script type="text/javascript" src="<%= DC.cdn_root(:agnostic => true) %>/viewer/viewer.js"></script>
   <% if Rails.env.production? %>
     <script>
       window.DV.recordHit = "<%= DC.server_root(:agnostic => true).html_safe %>/pixel.gif";

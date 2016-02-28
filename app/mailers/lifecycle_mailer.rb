@@ -2,11 +2,12 @@
 class LifecycleMailer < ActionMailer::Base
   include ActionView::Helpers::TextHelper # pluralize and friends
 
-  SUPPORT    = 'support@documentcloud.org'
-  EXCEPTIONS = 'exceptions@documentcloud.org'
-  NO_REPLY   = 'no-reply@documentcloud.org'
-  INFO       = 'info@documentcloud.org'
-  default from: SUPPORT
+  SENDER     = DC::CONFIG['mail_sender']
+  SUPPORT    = DC::CONFIG['mail_support']
+  EXCEPTIONS = DC::CONFIG['mail_exceptions']
+  NO_REPLY   = DC::CONFIG['mail_no_reply']
+  INFO       = DC::CONFIG['mail_info']
+  default from: SENDER
 
   # Mail instructions for a new account, with a secure link to activate,
   # set their password, and log in.

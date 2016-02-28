@@ -8,6 +8,12 @@ defaults: &defaults
   aws_region:           us-east-1
   aws_zone:             us-east-1c
   preconfigured_ami_id: <%= secrets['ami'] %>
+  mail_sender:          no-reply@lschreiner.de
+  mail_support:         support@lschreiner.de
+  mail_info:            info@lschreiner.de
+  mail_no_reply:        no-reply@lschreiner.de
+  mail_sender:          support@lschreiner.de
+  enable_omniauth:      no
 
 development:
   <<: *defaults

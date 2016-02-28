@@ -19,16 +19,18 @@ module DC
       # attached.
       def extract(document, text)
         @entities = {}
-        if chunks = CalaisFetcher.new.fetch_rdf(text)
-          chunks.each_with_index do |chunk, i|
-            next unless chunk
-            extract_information(document, chunks.first) if document.calais_id.blank?
-            extract_entities(document, chunk, i)
+        if DC::SECRETS['calais']
+          if chunks = CalaisFetcher.new.fetch_rdf(text)
+            chunks.each_with_index do |chunk, i|
+              next unless chunk
+              extract_information(document, chunks.first) if document.calais_id.blank?
+              extract_entities(document, chunk, i)
+            end
+            document.entities = @entities.values
+            document.save
+          else
+            # push an entity extraction job onto the queue.
           end
-          document.entities = @entities.values
-          document.save
-        else
-          # push an entity extraction job onto the queue.
         end
       end
 

@@ -5,6 +5,7 @@
 :disabled_actions:
   - backup_database
   - reindex_everything
+  - save_analytics
 
 # The following settings allow you to control the number of workers that can run
 # on a given node, to prevent the node from becoming overloaded. 'max_workers'
@@ -21,7 +22,7 @@
 # of processing. 's3' and 'filesystem' are supported. 'filesystem' should only
 # be used in development, on single-machine installations, or networked drives.
 # If you *are* developing an action, filesystem is certainly faster and easier.
-:storage:             s3
+:storage:             filesystem
 
 # Please provide your AWS credentials for S3 storage of job output.
 :aws_access_key:      <%= secrets['aws_access_key'] %>

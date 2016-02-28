@@ -97,7 +97,7 @@ class ApplicationController < ActionController::Base
     response = {
       :partial      => 'common/jsonp.js',
       :locals       => { obj: obj, callback: params[:callback] },
-      :content_type => 'application/javascript',
+      :content_type => 'text/javascript',
       :status       => options[:status]
     }
 
