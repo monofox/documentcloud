@@ -7,13 +7,16 @@ module DC
 
     # The AssetStore is responsible for storing search-opaque document assets,
     # either on S3 (or in development on the local filesystem in a tmp dir).
+    # LUS has no AwsS3Store => must be configurable
     class AssetStore
       if Rails.env.development? || Rails.env.testing?
         include FileSystemStore
         extend FileSystemStore::ClassMethods
       else
-        include AwsS3Store
-        extend  AwsS3Store::ClassMethods
+        #include AwsS3Store
+        #extend  AwsS3Store::ClassMethods
+        include FileSystemStore
+        extend FileSystemStore::ClassMethods
       end
     end
 

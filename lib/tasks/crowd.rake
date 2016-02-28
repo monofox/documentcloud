@@ -22,13 +22,13 @@ namespace :crowd do
 
       desc "Run the crowdcloud #{resource.to_s} in the foreground"
       task :run do
-        port = (resource == :server) ? '-p 8080' : ''
+        port = (resource == :server) ? '-p 8090' : ''
         sh "./bin/crowd -c config/cloud_crowd/#{crowd_folder} -e #{RAILS_ENV} #{port} #{resource} start"
       end
 
       desc "Start the crowdcloud #{resource.to_s}"
       task :start do
-        port = (resource == :server) ? '-p 8080' : ''
+        port = (resource == :server) ? '-p 8090' : ''
         sh "./bin/crowd -c config/cloud_crowd/#{crowd_folder} -e #{RAILS_ENV} #{port} -d #{resource} start"
       end
 
